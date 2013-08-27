@@ -8,11 +8,20 @@
 
 
 
+        (defn legal [idx] (and (pos? idx) (< idx 4)) )
+
 (with-test
     (defn mine?
       "Returns true if cell c contains a mine, false otherwise."
       [board c]
-        nil)
+      (
+        (cond (not (legal (c 0)) ) false
+              (not (legal (c 1)) ) false
+      				:else					(= :mine ((board (c 0)) (c 1)))
+        )
+        
+      )
+    )
   
   (is (true? (mine? board [0 1])))
   (is (false? (mine? board [0 2])))
